@@ -1,6 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // 静态导出配置
+  output: 'export',
+  
+  // 图片配置
+  images: {
+    unoptimized: true,
+  },
+  
+  // 资源前缀（生产环境）
+  assetPrefix: process.env.NODE_ENV === "production" ? "/soliditytool/" : "",
+  
+  // 基础路径（生产环境）
+  basePath: process.env.NODE_ENV === "production" ? "/soliditytool" : "",
+  
   // 配置 webpack 来忽略测试文件和文档文件
   webpack: (config, { isServer, webpack }) => {
     if (!isServer) {
